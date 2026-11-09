@@ -1,0 +1,12 @@
+.sf/
+.sfdx/
+.localdevserver/
+node_modules/
+coverage/
+deploy-results/
+code-analyzer-results.*
+authfile
+*.log
+.DS_Store
+.vscode/settings.json
+.claude/

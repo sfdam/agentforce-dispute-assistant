@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>High_Value_Threshold__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <description>Disputes with amount greater or equal to this value are flagged and notified on Slack</description>
+    <label>High Value Threshold</label>
+    <precision>16</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

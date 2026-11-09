@@ -1,0 +1,28 @@
+{
+  "name": "agentforce-dispute-assistant",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Agentforce assistant for card payment disputes, with Slack notifications and GitHub Actions CI/CD",
+  "scripts": {
+    "prettier": "prettier --write \"force-app/**/*.{cls,trigger,xml,js,html,css}\"",
+    "prettier:verify": "prettier --check \"force-app/**/*.{cls,trigger,xml,js,html,css}\"",
+    "lint": "eslint \"force-app/**/{aura,lwc}/**/*.js\" --no-error-on-unmatched-pattern",
+    "test:unit": "sfdx-lwc-jest --passWithNoTests",
+    "prepare": "husky || true"
+  },
+  "devDependencies": {
+    "@prettier/plugin-xml": "^3.4.2",
+    "@salesforce/eslint-config-lwc": "^4.0.0",
+    "@salesforce/sfdx-lwc-jest": "^7.0.2",
+    "eslint": "^9.29.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.9.10",
+    "prettier-plugin-apex": "^2.3.0"
+  },
+  "lint-staged": {
+    "force-app/**/*.{cls,trigger,xml,js,html,css}": [
+      "prettier --write"
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+# Runs when a PR is merged into main: real deploy to the target org.
+name: Deploy to org
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "force-app/**"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-main
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy force-app
+    runs-on: ubuntu-latest
+    environment: production-org
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Salesforce CLI
+        run: npm install --global @salesforce/cli
+
+      - name: Authenticate to target org
+        run: |
+          echo "${{ secrets.SFDX_AUTH_URL }}" > authfile
+          sf org login sfdx-url --sfdx-url-file authfile --alias target-org
+          rm authfile
+
+      - name: Deploy with local tests
+        run: |
+          sf project deploy start \
+            --source-dir force-app \
+            --target-org target-org \
+            --test-level RunLocalTests \
+            --wait 30
