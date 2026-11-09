@@ -8,7 +8,7 @@
     <protected>false</protected>
     <values>
         <field>High_Value_Threshold__c</field>
-        <value xsi:type="xsd:double">1000.0</value>
+        <value xsi:type="xsd:double">500.0</value>
     </values>
     <values>
         <field>Dispute_Window_Days__c</field>
